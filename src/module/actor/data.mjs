@@ -31,6 +31,7 @@ export class CelestusActorData extends foundry.abstract.TypeDataModel {
         focus: resourceField(),
       }),
       attributes: new SchemaField({
+        size: new StringField({ required: true, initial: "medium" }),
         armor: new SchemaField({
           // Inferred
           value: new NumberField({ integer: true }),
@@ -52,5 +53,15 @@ export class CelestusActorData extends foundry.abstract.TypeDataModel {
         }),
       }),
     };
+  }
+
+  /**
+   * Inferred list of things actor "can always do"
+   *
+   * @type {String[]}
+   */
+  get canAlways() {
+    // TODO: search items for items
+    return [];
   }
 }
