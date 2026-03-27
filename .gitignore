@@ -1,0 +1,10 @@
+# IDE
+.idea/
+.vs/
+.vscode
+
+# npm
+node_modules/
+
+# symlink
+foundry

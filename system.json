@@ -1,0 +1,49 @@
+{
+  "id": "celestus-2",
+  "title": "Celestus 2",
+  "description": "A TTRPG inspired by the gameplay of the Divinity Original Sin series.",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": 13,
+    "verified": 13
+  },
+  "authors": [
+    {
+      "name": "ethan",
+      "url": "https://github.com/egrosenberg/",
+      "email": "",
+      "discord": "krostorm"
+    }
+  ],
+  "esmodules": ["src/celestus.mjs"],
+  "styles": [],
+  "packs": [],
+  "packFolders": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "keeper": {
+        "htmlFields": ["biography"]
+      },
+      "npc": {
+        "htmlFields": ["biography"]
+      }
+    }
+  },
+  "socket": true,
+  "initiative": "0",
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "resources.hp",
+  "url": "https://github.com/egrosenberg/celestus",
+  "manifest": "https://github.com/egrosenberg/celestus/releases/latest/download/system.json",
+  "download": "https://github.com/egrosenberg/celestus/releases/latest/download/celestus.zip"
+}
