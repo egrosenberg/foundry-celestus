@@ -1,0 +1,25 @@
+{
+  "CELESTUS.VirtueVigor": "Vigor",
+  "CELESTUS.VirtueClarity": "Clarity",
+  "CELESTUS.VirtueSpirit": "Spirit",
+  "CELESTUS.VirtueVigorAbbr": "vig",
+  "CELESTUS.VirtueClarityAbbr": "cla",
+  "CELESTUS.VirtueSpiritAbbr": "spi",
+
+  "CELESTUS.VitalGuard": "Guard",
+  "CELESTUS.VitalWard": "Ward",
+  "CELESTUS.VitalHealth": "Health",
+  "CELESTUS.VitalGuardAbbr": "gd",
+  "CELESTUS.VitalWardAbbr": "wd",
+  "CELESTUS.VitalHealthAbbr": "hp",
+
+  "CELESTUS.DamageAir": "Air",
+  "CELESTUS.DamageEarth": "Earth",
+  "CELESTUS.DamageFire": "Fire",
+  "CELESTUS.DamagePhysical": "Physical",
+  "CELESTUS.DamagePiercing": "Piercing",
+  "CELESTUS.DamagePoison": "Poison",
+  "CELESTUS.DamageRadiant": "Radiant",
+  "CELESTUS.DamageShadow": "Shadow",
+  "CELESTUS.DamageWater": "Water"
+}

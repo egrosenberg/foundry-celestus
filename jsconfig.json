@@ -4,7 +4,8 @@
     "target": "ES6",
     "paths": {
       "@client/*": ["./foundry/client/*"],
-      "@common/*": ["./foundry/common/*"]
+      "@common/*": ["./foundry/common/*"],
+      "@module/*": ["./src/module/*"]
     }
   },
   "include": ["src/**/*", "foundry/common/**/*", "foundry/client/**/*"]

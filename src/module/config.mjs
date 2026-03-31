@@ -2,7 +2,7 @@ const CELESTUS = {};
 
 /**
  * @import {
- *   VirtueConfiguration, VitalConfiguration
+ *   VirtueConfiguration, VitalConfiguration, DamageType, DamageTypeConfiguration
  * } from "./_types.mjs";
  */
 
@@ -47,6 +47,49 @@ CELESTUS.vitals = {
     label: "CELESTUS.VitalHealth",
     abbreviation: "CELESTUS.VitalHealthAbbr",
     fullkey: "health",
+  },
+};
+
+/**
+ * Enum for base damage types
+ * @enum {DamageTypeConfiguration}
+ */
+CELESTUS.damageTypes = {
+  air: {
+    label: "CELESTUS.DamageAir",
+    vital: "wd",
+  },
+  earth: {
+    label: "CELESTUS.DamageEarth",
+    vital: "wd",
+  },
+  fire: {
+    label: "CELESTUS.DamageFire",
+    vital: "wd",
+  },
+  physical: {
+    label: "CELESTUS.DamagePhysical",
+    vital: "gd",
+  },
+  piercing: {
+    label: "CELESTUS.DamagePiercing",
+    vital: "hp",
+  },
+  poison: {
+    label: "CELESTUS.DamagePoison",
+    vital: "wd",
+  },
+  radiant: {
+    label: "CELESTUS.DamageRadiant",
+    vital: "wd",
+  },
+  shadow: {
+    label: "CELESTUS.DamageShadow",
+    vital: "wd",
+  },
+  water: {
+    label: "CELESTUS.DamageWater",
+    vital: "wd",
   },
 };
 
