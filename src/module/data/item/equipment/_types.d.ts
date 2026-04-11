@@ -4,7 +4,7 @@ interface DamageModifier {
 }
 
 declare module "./equipment.mjs" {
-  import { DamageType } from "@module/_types";
+  import { DamageType } from "../../../_types";
 
   interface BaseEquipmentModel {
     isEquipment: true;

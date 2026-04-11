@@ -1,25 +1,43 @@
 {
-  "CELESTUS.VirtueVigor": "Vigor",
-  "CELESTUS.VirtueClarity": "Clarity",
-  "CELESTUS.VirtueSpirit": "Spirit",
-  "CELESTUS.VirtueVigorAbbr": "vig",
-  "CELESTUS.VirtueClarityAbbr": "cla",
-  "CELESTUS.VirtueSpiritAbbr": "spi",
+  "CELESTUS": {
+    "VirtueVigor": "Vigor",
+    "VirtueClarity": "Clarity",
+    "VirtueSpirit": "Spirit",
+    "VirtueVigorAbbr": "vig",
+    "VirtueClarityAbbr": "cla",
+    "VirtueSpiritAbbr": "spi",
 
-  "CELESTUS.VitalGuard": "Guard",
-  "CELESTUS.VitalWard": "Ward",
-  "CELESTUS.VitalHealth": "Health",
-  "CELESTUS.VitalGuardAbbr": "gd",
-  "CELESTUS.VitalWardAbbr": "wd",
-  "CELESTUS.VitalHealthAbbr": "hp",
+    "VitalGuard": "Guard",
+    "VitalWard": "Ward",
+    "VitalHealth": "Health",
+    "VitalGuardAbbr": "gd",
+    "VitalWardAbbr": "wd",
+    "VitalHealthAbbr": "hp",
 
-  "CELESTUS.DamageAir": "Air",
-  "CELESTUS.DamageEarth": "Earth",
-  "CELESTUS.DamageFire": "Fire",
-  "CELESTUS.DamagePhysical": "Physical",
-  "CELESTUS.DamagePiercing": "Piercing",
-  "CELESTUS.DamagePoison": "Poison",
-  "CELESTUS.DamageRadiant": "Radiant",
-  "CELESTUS.DamageShadow": "Shadow",
-  "CELESTUS.DamageWater": "Water"
+    "DamageAir": "Air",
+    "DamageEarth": "Earth",
+    "DamageFire": "Fire",
+    "DamagePhysical": "Physical",
+    "DamagePiercing": "Piercing",
+    "DamagePoison": "Poison",
+    "DamageRadiant": "Radiant",
+    "DamageShadow": "Shadow",
+    "DamageWater": "Water",
+
+    "SHEET": {
+      "Labels": {
+        "Character": "Character",
+        "Fields": {
+          "actor": {
+            "vitals": {
+              "hpMaxBase": "Max ʜᴘ",
+              "hpMax": "Calculated max ʜᴘ",
+              "hpMaxBonus": "Bonus max ʜᴘ",
+              "hpValue": "Current ʜᴘ"
+            }
+          }
+        }
+      }
+    }
+  }
 }

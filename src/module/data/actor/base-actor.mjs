@@ -1,13 +1,14 @@
-import {
+import attributeField from "./lib/attribute-field.mjs";
+import { resourceField } from "./lib/resource-field.mjs";
+
+const {
   ArrayField,
   HTMLField,
   NumberField,
   SchemaField,
   SetField,
   StringField,
-} from "@client/data/fields.mjs";
-import attributeField from "./lib/attribute-field.mjs";
-import { resourceField } from "./lib/resource-field.mjs";
+} = foundry.data.fields;
 
 /**
  * @import {ActorResources, ActorAttributes} from "./_types"
@@ -16,12 +17,12 @@ import { resourceField } from "./lib/resource-field.mjs";
 
 /**
  * Base data model for actors
- * @extends {foundry.abstract.TypeDataModel<ActorSystemData>}
+ * @extends {foundry.abstract.TypeDataModel<BaseActorModel>}
  */
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
-      biography: new HTMLField(),
+      biography: new HTMLField({ initial: "" }),
       resources: new SchemaField({
         virtues: new SchemaField(
           Object.keys(CELESTUS.virtues).reduce(
@@ -115,6 +116,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     this.resources.actions.value = maxActions + this.resources.actions.offset;
     this.resources.focus.value = maxFocus + this.resources.focus.offset;
 
+    const attributes = this.attributes;
+
     // Movement is not based on equipment
     this.attributes.movement.value =
       attributes.movement.base + attributes.movement.bonus;
@@ -134,7 +137,6 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       wd: vitals.wd.maxBase + vitals.wd.maxBonus,
     };
 
-    const attributes = this.attributes;
     let armor =
       attributes.armor.mode === "natural" ? attributes.armor.natural : 0;
     armor += attributes.armor.bonus;

@@ -1,4 +1,4 @@
-import { NumberField, SchemaField } from "@common/data/fields.mjs";
+const { NumberField, SchemaField } = foundry.data.fields;
 
 /**
  * Object to create schema field for a resource (virtue/vital)

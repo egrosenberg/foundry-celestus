@@ -1,4 +1,4 @@
-import { SchemaField } from "@client/data/fields.mjs";
+const { SchemaField } = foundry.data.fields;
 
 /**
  * @import {AttributeField} from "../_types"

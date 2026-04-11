@@ -1,6 +1,6 @@
 /// <reference path="_types.d.ts" />
 
-import {
+const {
   ArrayField,
   BooleanField,
   DocumentUUIDField,
@@ -8,7 +8,7 @@ import {
   NumberField,
   SchemaField,
   StringField,
-} from "@common/data/fields.mjs";
+} = foundry.data.fields;
 
 /**
  * Create a schema field to use for fields modifying
