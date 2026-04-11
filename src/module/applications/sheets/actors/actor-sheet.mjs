@@ -49,8 +49,6 @@ export default class CelestusActorSheet extends CelestusSheet {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 
-    console.log("DEFAULT OPTIONS: ", CelestusActorSheet.DEFAULT_OPTIONS);
-
     return context;
   }
 }

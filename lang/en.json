@@ -33,7 +33,8 @@
               "hpMaxBase": "Max ʜᴘ",
               "hpMax": "Calculated max ʜᴘ",
               "hpMaxBonus": "Bonus max ʜᴘ",
-              "hpValue": "Current ʜᴘ"
+              "hpValue": "Current ʜᴘ",
+              "hpOffset": "ʜᴘ offset"
             }
           }
         }
