@@ -4,8 +4,8 @@
   "description": "A TTRPG inspired by the gameplay of the Divinity Original Sin series.",
   "version": "0.0.1",
   "compatibility": {
-    "minimum": 13,
-    "verified": 13
+    "minimum": 14,
+    "verified": 14
   },
   "authors": [
     {
