@@ -4,6 +4,15 @@ import CelestusSheet from "../celestus-sheet.mjs";
 const { sheets } = foundry.applications;
 
 export default class CelestusActorSheet extends CelestusSheet {
+  // Manually redefining for type def
+  /**
+   * The HTMLElement which renders this Application into the DOM.
+   * @type {HTMLElement}
+   */
+  get element() {
+    return super.element;
+  }
+
   /** @inheritdoc */
   static get DEFAULT_OPTIONS() {
     return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
@@ -12,7 +21,7 @@ export default class CelestusActorSheet extends CelestusSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "biography",
+          initial: "bio",
         },
       ],
       actions: { ...sheets.ActorSheetV2.DEFAULT_OPTIONS.actions },
@@ -30,18 +39,24 @@ export default class CelestusActorSheet extends CelestusSheet {
 
   static TABS = {
     primary: {
-      tabs: [{ id: "biography" }],
+      tabs: [
+        { id: "bio", label: "CELESTUS.SHEET.Labels.Tabs.bio" },
+        { id: "items", label: "CELESTUS.SHEET.Labels.Tabs.items" },
+      ],
+      initial: "header",
     },
-    initial: "biography",
   };
 
   static PARTS = {
-    biography: {
-      template: systemPath("templates/documents/actor/sheet.hbs"),
-      form: {
-        submitOnChange: true,
-        closeOnSubmit: false,
-      },
+    tabs: {
+      // Foundry-provided generic template
+      template: "templates/generic/tab-navigation.hbs",
+    },
+    bio: {
+      template: systemPath("templates/documents/actor/bio.hbs"),
+    },
+    items: {
+      template: systemPath("templates/documents/actor/items.hbs"),
     },
   };
 
@@ -53,12 +68,20 @@ export default class CelestusActorSheet extends CelestusSheet {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 
+    context.items = Array.from(this.document.items);
+
     return context;
   }
 
-  /* -------------------------------------------------- */
-  /*   Drag and Drop                                    */
-  /* -------------------------------------------------- */
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    this._bindItemInteractions();
+  }
+
+  //==================================================================
+  // Drag and Drop
+  //==================================================================
 
   /** @inheritdoc */
   async _onDropItem(event, item) {
@@ -77,5 +100,23 @@ export default class CelestusActorSheet extends CelestusSheet {
       keepId,
     });
     return result ?? null;
+  }
+
+  //==================================================================
+
+  /**
+   * Add relevant event listeners to items rendered on the sheet
+   */
+  _bindItemInteractions() {
+    const getDocument = this._getEmbeddedDocument.bind(this);
+
+    // Open item sheets on edit
+    const editControls = this.element.querySelectorAll(".item-edit");
+    for (const control of editControls) {
+      control.addEventListener("click", (event) => {
+        const item = getDocument(event.currentTarget);
+        item?.sheet.render(true);
+      });
+    }
   }
 }

@@ -1,0 +1,10 @@
+<section class="tab items" data-group="primary" data-tab="items">
+  <div class="vstack gap-sm">
+    {{#each items}}
+    <div class="hstack gap-md justify-space-between item-edit" data-document-uuid="{{this.uuid}}">
+      <div>{{this.name}}</div>
+      <div>{{this.type}}</div>
+    </div>
+    {{/each}}
+  </div>
+</section>

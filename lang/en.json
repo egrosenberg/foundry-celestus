@@ -34,9 +34,25 @@
               "hpMax": "Calculated max ʜᴘ",
               "hpMaxBonus": "Bonus max ʜᴘ",
               "hpValue": "Current ʜᴘ",
-              "hpOffset": "ʜᴘ offset"
+              "hpOffset": "ʜᴘ offset",
+
+              "gdMaxBase": "Max ɢᴅ",
+              "gdMax": "Calculated max ɢᴅ",
+              "gdMaxBonus": "Bonus max ɢᴅ",
+              "gdValue": "Current ɢᴅ",
+              "gdOffset": "ɢᴅ offset",
+
+              "wdMaxBase": "Max ᴡᴅ",
+              "wdMax": "Calculated max ᴡᴅ",
+              "wdMaxBonus": "Bonus max ᴡᴅ",
+              "wdValue": "Current ᴡᴅ",
+              "wdOffset": "ᴡᴅ offset"
             }
           }
+        },
+        "Tabs": {
+          "bio": "Bio",
+          "items": "Items"
         }
       }
     }
