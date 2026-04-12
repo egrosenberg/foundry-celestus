@@ -24,6 +24,7 @@ export default defineConfig([
         ActiveEffect: `readonly`,
         fromUuid: `readonly`,
         fromUuidSync: `readonly`,
+        getDocumentClass: "readonly",
 
         // v14 Additions:
         _loc: `readonly`,
