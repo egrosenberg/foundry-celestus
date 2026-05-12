@@ -78,3 +78,8 @@ html {
 .justify-space-evenly {
   justify-content: space-evenly;
 }
+
+/* Text styles */
+.small-caps {
+  font-variant: small-caps;
+}

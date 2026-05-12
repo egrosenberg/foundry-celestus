@@ -6,6 +6,8 @@
  * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
 
+import C_CONST from "../../const.mjs";
+
 const { ux, api } = foundry.applications;
 
 export default class CelestusSheet extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -81,6 +83,7 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
       systemFields: this.document.system.schema.fields,
       flags: this.document.flags,
       config: CELESTUS,
+      sysId: C_CONST.systemID,
     });
 
     return context;

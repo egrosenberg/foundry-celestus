@@ -1,0 +1,88 @@
+.celestus {
+  --virtue-color-active-start: #1f1a1f;
+  --virtue-color-active: #383638;
+  --virtue-color-inactive: #181818;
+
+  --virtue-color-gd-active-start: #973522;
+  --virtue-color-gd-active: #d1624b;
+  --virtue-color-gd-inactive: #2c1815;
+  --virtue-color-wd-active-start: #19437a;
+  --virtue-color-wd-active: #3a7bcf;
+  --virtue-color-wd-inactive: #121822;
+  --virtue-color-hp-active-start: #29690f;
+  --virtue-color-hp-active: #337c16;
+  --virtue-color-hp-inactive: #111a11;
+
+  --virtue-active-percent: 100%;
+}
+
+.celestus .virtue-input {
+  min-height: 2.5rem;
+  width: 10rem;
+  outline: thin solid white;
+  background-image: linear-gradient(
+    to right,
+    var(--virtue-color-active-start) 0%,
+    var(--virtue-color-active) var(--virtue-active-percent),
+    var(--virtue-color-inactive) var(--virtue-active-percent) 100%
+  );
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 0 1px black;
+}
+
+.celestus .virtue-input.gd {
+  background-image: linear-gradient(
+    to right,
+    var(--virtue-color-gd-active-start) 0%,
+    var(--virtue-color-gd-active) var(--virtue-active-percent),
+    var(--virtue-color-gd-inactive) var(--virtue-active-percent) 100%
+  );
+}
+.celestus .virtue-input.wd {
+  background-image: linear-gradient(
+    to right,
+    var(--virtue-color-wd-active-start) 0%,
+    var(--virtue-color-wd-active) var(--virtue-active-percent),
+    var(--virtue-color-wd-inactive) var(--virtue-active-percent) 100%
+  );
+}
+.celestus .virtue-input.hp {
+  background-image: linear-gradient(
+    to right,
+    var(--virtue-color-hp-active-start) 0%,
+    var(--virtue-color-hp-active) var(--virtue-active-percent),
+    var(--virtue-color-hp-inactive) var(--virtue-active-percent) 100%
+  );
+}
+
+.celestus .virtue-input input {
+  display: block;
+  width: 3rem;
+  opacity: 0;
+  height: 0px;
+  border-radius: 0.25rem;
+  background-color: none;
+  outline: none;
+  padding: 0.0365rem 0.25rem;
+  font-size: 1rem;
+  text-align: right;
+}
+.celestus .virtue-input input:focus {
+  opacity: 100%;
+  background-color: #0003;
+  height: min-content;
+}
+.celestus .virtue-input label {
+  display: block;
+  font-weight: normal;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.celestus .virtue-input:has(input:focus) label {
+  opacity: 0%;
+  height: 0px;
+}

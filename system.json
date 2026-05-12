@@ -16,7 +16,7 @@
     }
   ],
   "esmodules": ["src/celestus.mjs"],
-  "styles": ["css/base.css"],
+  "styles": ["css/base.css", "css/celestus.css"],
   "packs": [],
   "packFolders": [],
   "languages": [
@@ -46,6 +46,12 @@
   "grid": {
     "distance": 5,
     "units": "ft"
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "src/styles", "lang", "templates"]
+    }
   },
   "primaryTokenAttribute": "resources.hp",
   "url": "https://github.com/egrosenberg/celestus",

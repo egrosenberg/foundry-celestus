@@ -29,6 +29,12 @@
         "Character": "Character",
         "Fields": {
           "actor": {
+            "maxBase": "Max",
+            "max": "Calculated max",
+            "maxBonus": "Bonus max",
+            "value": "Current",
+            "offset": "offset",
+
             "vitals": {
               "hpMaxBase": "Max ʜᴘ",
               "hpMax": "Calculated max ʜᴘ",

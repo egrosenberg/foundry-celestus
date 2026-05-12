@@ -1,6 +1,12 @@
 import systemPath from "../../../../lib/systemPath.mjs";
+import resolvePath from "../../../lib/object/resolve-path.mjs";
+
 import CelestusSheet from "../celestus-sheet.mjs";
 
+/**
+ * @import BaseActorModel from "../../../data/actor/base-actor.mjs"
+ * @import {ResourceField} from "../../../data/actor/_types".
+ */
 const { sheets } = foundry.applications;
 
 export default class CelestusActorSheet extends CelestusSheet {
@@ -16,7 +22,7 @@ export default class CelestusActorSheet extends CelestusSheet {
   /** @inheritdoc */
   static get DEFAULT_OPTIONS() {
     return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
-      classes: ["actor"],
+      classes: ["actor", "celestus"],
       tabs: [
         {
           navSelector: ".sheet-tabs",
@@ -43,7 +49,7 @@ export default class CelestusActorSheet extends CelestusSheet {
         { id: "bio", label: "CELESTUS.SHEET.Labels.Tabs.bio" },
         { id: "items", label: "CELESTUS.SHEET.Labels.Tabs.items" },
       ],
-      initial: "header",
+      initial: "bio",
     },
   };
 
@@ -68,7 +74,48 @@ export default class CelestusActorSheet extends CelestusSheet {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 
+    /** @type {BaseActorModel} */
+    const sysActor = this.document.system;
+
     context.items = Array.from(this.document.items);
+
+    context.vitals = {};
+
+    for (const key of Object.keys(sysActor.resources.vitals)) {
+      context.vitals[key] = {
+        fields:
+          this.document.system.schema.fields.resources.fields.vitals.fields[key]
+            .fields,
+        /**
+         * @type {string}
+         */
+        label: CELESTUS.vitals[key].abbreviation,
+        /**
+         * @type {ResourceField}
+         */
+        values: sysActor.resources.vitals[key],
+        /**
+         * @type {string}
+         */
+        key,
+        /**
+         * css classes
+         * @type {string}
+         */
+        classname: `virtue-input ${key}`,
+      };
+    }
+
+    // context.vitalFields = Object.keys(sysActor.resources.vitals).map(
+    //   (key) =>
+    //     this.document.system.schema.fields.resources.fields.vitals.fields[key]
+    //       .fields,
+    // );
+    context.virtueFields = Object.keys(sysActor.resources.virtues).map(
+      (key) =>
+        this.document.system.schema.fields.resources.fields.virtues.fields[key]
+          .fields,
+    );
 
     return context;
   }
@@ -77,6 +124,7 @@ export default class CelestusActorSheet extends CelestusSheet {
   async _onRender(context, options) {
     await super._onRender(context, options);
     this._bindItemInteractions();
+    this._onRenderVirtues(context);
   }
 
   //==================================================================
@@ -118,5 +166,25 @@ export default class CelestusActorSheet extends CelestusSheet {
         item?.sheet.render(true);
       });
     }
+  }
+
+  _onRenderVirtues(context) {
+    // Virtue inputs should select full contents on focus
+    this.element.querySelectorAll(".virtue-input input").forEach((el) =>
+      el.addEventListener("focus", function () {
+        this.select();
+      }),
+    );
+    // Set value css variable for styling percentages of
+    this.element.querySelectorAll(".virtue-input").forEach((el) => {
+      const virtueName = /.+(?=\.[^\\.]+$)/.exec(
+        el.querySelector("input").name,
+      )[0];
+      const virtue = resolvePath(context, virtueName);
+      el.style.setProperty(
+        "--virtue-active-percent",
+        `${Math.min(100, (virtue.value / virtue.max) * 100).toFixed(0)}%`,
+      );
+    });
   }
 }
