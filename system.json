@@ -16,7 +16,7 @@
     }
   ],
   "esmodules": ["src/celestus.mjs"],
-  "styles": ["css/base.css", "css/celestus.css"],
+  "styles": ["css/base.css", "css/celestus.css", "css/fonts.css"],
   "packs": [],
   "packFolders": [],
   "languages": [

@@ -17,8 +17,8 @@ CELESTUS.virtues = {
     fullkey: "vigor",
   },
   cla: {
-    label: "CELESTUS.VirtueVigor",
-    abbreviation: "CELESTUS.VirtueVigorAbbr",
+    label: "CELESTUS.VirtueClarity",
+    abbreviation: "CELESTUS.VirtueClarityAbbr",
     fullkey: "clarity",
   },
   spi: {

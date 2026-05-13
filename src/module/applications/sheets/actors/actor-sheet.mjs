@@ -19,6 +19,10 @@ export default class CelestusActorSheet extends CelestusSheet {
     return super.element;
   }
 
+  get label() {
+    return _loc(this.options.window.title);
+  }
+
   /** @inheritdoc */
   static get DEFAULT_OPTIONS() {
     return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
@@ -106,16 +110,33 @@ export default class CelestusActorSheet extends CelestusSheet {
       };
     }
 
-    // context.vitalFields = Object.keys(sysActor.resources.vitals).map(
-    //   (key) =>
-    //     this.document.system.schema.fields.resources.fields.vitals.fields[key]
-    //       .fields,
-    // );
-    context.virtueFields = Object.keys(sysActor.resources.virtues).map(
-      (key) =>
-        this.document.system.schema.fields.resources.fields.virtues.fields[key]
-          .fields,
-    );
+    context.virtues = {};
+
+    for (const key of Object.keys(sysActor.resources.virtues)) {
+      context.virtues[key] = {
+        fields:
+          this.document.system.schema.fields.resources.fields.virtues.fields[
+            key
+          ].fields,
+        /**
+         * @type {string}
+         */
+        label: CELESTUS.virtues[key].abbreviation,
+        /**
+         * @type {ResourceField}
+         */
+        values: sysActor.resources.virtues[key],
+        /**
+         * @type {string}
+         */
+        key,
+        /**
+         * css classes
+         * @type {string}
+         */
+        classname: `virtue-input ${key}`,
+      };
+    }
 
     return context;
   }

@@ -1,101 +1,31 @@
 <section class="tab bio {{tabs.bio.cssClass}}" data-group="primary" data-tab="bio">
-  <div class="vstack gap-md">
-    <h4>Vitals</h4>
-    {{#each vitals}}
-      <div class="hstack gap-md align-end justify-space-evenly">
-        <h6 class="small-caps">{{localize label}}</h6>
-        {{!-- {{formGroup fields.maxBase value=values.maxBase classes="virtue-input"}}
-        {{formGroup
-          fields.maxBonus
-          value=values.maxBonus
-          classes="virtue-input"
-        }} --}}
-        {{formGroup
-          fields.value
-          value=values.value
-          rootId=../sysId
-          label=(concat values.value "/" values.max)
-          classes=classname
-        }}
-        {{!-- <div>
-          {{values.offset}}
-        </div> --}}
-      </div>
-      {{!-- <div class="hstack gap-md align-end justify-space-evenly">
-        <h6 class="small-caps">{{localize label}}</h6>
-        {{formGroup
-          fields.maxBase
-          value=values.maxBase
-          label=(localize "CELESTUS.SHEET.Labels.Fields.actor.value")
-          classes="virtue-input"
-        }}
-        {{formGroup
-          fields.maxBonus
-          value=values.maxBonus
-          label=(localize "CELESTUS.SHEET.Labels.Fields.actor.maxBonus")
-          classes="virtue-input"
-        }}
-        <div>
-          {{localize "CELESTUS.SHEET.Labels.Fields.actor.max"}}:
-          {{values.max}}
-        </div>
-        <div>
-          {{localize "CELESTUS.SHEET.Labels.Fields.actor.offset"}}:
-          {{values.offset}}
-        </div>
-        {{formGroup
-          fields.value
-          value=values.value
-          label=(localize "CELESTUS.SHEET.Labels.Fields.actor.value")
-          classes="virtue-input"
-        }}
-      </div> --}}
-    {{/each}}
-    {{!-- <div class="hstack gap-md align-end justify-space-evenly">
+  <div class="vstack gap-md p-md">
+    <input name="name" type="text" value="{{document.name}}" class="actor-name">
+    <div class="virtue-grid">
+      {{#each virtues}}
+      <div class="virtue-label">{{localize label}}</div>
       {{formGroup
-      systemFields.resources.fields.vitals.fields.gd.fields.maxBase
-      value=system.resources.vitals.gd.maxBase
-      label=(localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.gdMaxBase")
+      fields.value
+      value=values.value
+      rootId=../sysId
+      label=(concat values.value "/" values.max)
+      classes=classname
       }}
-      {{formGroup
-      systemFields.resources.fields.vitals.fields.gd.fields.maxBonus
-      value=system.resources.vitals.gd.maxBonus
-      label=(localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.gdMaxBonus")
-      }}
-      <div>
-        {{localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.gdMax"}}: {{system.resources.vitals.gd.max}}
-      </div>
-      <div>
-        {{localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.gdOffset"}}: {{system.resources.vitals.gd.offset}}
-      </div>
-      {{formGroup
-      systemFields.resources.fields.vitals.fields.gd.fields.value
-      value=system.resources.vitals.gd.value
-      label=(localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.gdValue")
-      }}
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+      {{/each}}
     </div>
-    <div class="hstack gap-md align-end justify-space-evenly">
+    <div class="virtue-grid">
+      {{#each vitals}}
+      <div class="virtue-label">{{localize label}}</div>
       {{formGroup
-      systemFields.resources.fields.vitals.fields.wd.fields.maxBase
-      value=system.resources.vitals.wd.maxBase
-      label=(localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.wdMaxBase")
+      fields.value
+      value=values.value
+      rootId=../sysId
+      label=(concat values.value "/" values.max)
+      classes=classname
       }}
-      {{formGroup
-      systemFields.resources.fields.vitals.fields.wd.fields.maxBonus
-      value=system.resources.vitals.wd.maxBonus
-      label=(localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.wdMaxBonus")
-      }}
-      <div>
-        {{localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.wdMax"}}: {{system.resources.vitals.wd.max}}
-      </div>
-      <div>
-        {{localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.wdOffset"}}: {{system.resources.vitals.wd.offset}}
-      </div>
-      {{formGroup
-      systemFields.resources.fields.vitals.fields.wd.fields.value
-      value=system.resources.vitals.wd.value
-      label=(localize "CELESTUS.SHEET.Labels.Fields.actor.vitals.wdValue")
-      }}
-    </div> --}}
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+      {{/each}}
+    </div>
   </div>
 </section>

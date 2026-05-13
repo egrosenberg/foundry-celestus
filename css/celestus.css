@@ -16,10 +16,28 @@
   --virtue-active-percent: 100%;
 }
 
+/**
+ * ===============================================
+ * Misc. Inputs
+ * ===============================================
+ */
+
+.celestus .actor-name {
+  font-size: 2rem;
+  font-family: "Uncial Antiqua", system-ui;
+  background-color: transparent;
+  padding-left: 2rem;
+}
+
+/**
+ * ===============================================
+ * Begin VIRTUES
+ * ===============================================
+ */
 .celestus .virtue-input {
-  min-height: 2.5rem;
+  height: 1.5rem;
   width: 10rem;
-  outline: thin solid white;
+  outline: thin solid var(--color-light-5);
   background-image: linear-gradient(
     to right,
     var(--virtue-color-active-start) 0%,
@@ -60,16 +78,21 @@
 }
 
 .celestus .virtue-input input {
-  display: block;
-  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   height: 0px;
   border-radius: 0.25rem;
   background-color: none;
   outline: none;
-  padding: 0.0365rem 0.25rem;
+  padding-right: var(--spacing-2xl);
   font-size: 1rem;
   text-align: right;
+  line-height: 100%;
+  cursor: pointer;
 }
 .celestus .virtue-input input:focus {
   opacity: 100%;
@@ -81,8 +104,48 @@
   font-weight: normal;
   font-size: 1rem;
   cursor: pointer;
+  line-height: 100%;
+  width: 100%;
+  text-align: center;
 }
 .celestus .virtue-input:has(input:focus) label {
   opacity: 0%;
   height: 0px;
 }
+
+/* Virtues grid */
+.virtue-grid {
+  display: grid;
+  position: relative;
+  grid-template-columns: 2rem min-content min-content;
+  width: 24rem;
+  border-collapse: collapse;
+  column-gap: var(--spacing-sm);
+  row-gap: var(--spacing-sm);
+}
+
+.virtue-grid .virtue-label {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 0.75rem;
+  max-width: min-content;
+  display: flex;
+  justify-content: flex-end;
+  justify-self: end;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  line-height: 100%;
+  text-align: right;
+  width: 2rem;
+}
+
+.virtue-grid > * {
+  align-self: center;
+}
+
+/**
+ * ===============================================
+ * End VIRTUES
+ * ===============================================
+ */
