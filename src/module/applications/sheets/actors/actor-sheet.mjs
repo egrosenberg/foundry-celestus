@@ -102,11 +102,6 @@ export default class CelestusActorSheet extends CelestusSheet {
          * @type {string}
          */
         key,
-        /**
-         * css classes
-         * @type {string}
-         */
-        classname: `virtue-input ${key}`,
       };
     }
 
@@ -191,13 +186,13 @@ export default class CelestusActorSheet extends CelestusSheet {
 
   _onRenderVirtues(context) {
     // Virtue inputs should select full contents on focus
-    this.element.querySelectorAll(".virtue-input input").forEach((el) =>
+    this.element.querySelectorAll(".virtue-meter input").forEach((el) =>
       el.addEventListener("focus", function () {
         this.select();
       }),
     );
     // Set value css variable for styling percentages of
-    this.element.querySelectorAll(".virtue-input").forEach((el) => {
+    this.element.querySelectorAll(".virtue-meter").forEach((el) => {
       const virtueName = /.+(?=\.[^\\.]+$)/.exec(
         el.querySelector("input").name,
       )[0];

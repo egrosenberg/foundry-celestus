@@ -23,10 +23,47 @@
  */
 
 .celestus .actor-name {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-family: "Uncial Antiqua", system-ui;
   background-color: transparent;
-  padding-left: 2rem;
+  overflow-y: visible;
+}
+
+.celestus .icon-button {
+  border: none;
+  outline: none;
+  background-color: var(--color-action);
+  height: 2rem;
+  width: 2rem;
+  font-size: 1rem;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 1rem;
+  box-shadow: none;
+}
+.celestus .icon-button:hover {
+  background-color: var(--color-action-hover);
+}
+
+.celestus button.toggle-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-text);
+  transition: opacity 0.5s;
+}
+.celestus button.toggle-button:hover {
+  background-color: var(--color-action-ghost);
+}
+.celestus button.toggle-button.active {
+  background-color: var(--color-action);
+}
+.celestus button.toggle-button.active:hover {
+  background-color: var(--color-action-hover);
 }
 
 /**
@@ -34,7 +71,7 @@
  * Begin VIRTUES
  * ===============================================
  */
-.celestus .virtue-input {
+.celestus .virtue-meter {
   height: 1.5rem;
   width: 10rem;
   outline: thin solid var(--color-light-5);
@@ -51,8 +88,11 @@
   justify-content: center;
   text-shadow: 0 0 1px black;
 }
+.celestus .edit .virtue-meter {
+  flex-direction: row;
+}
 
-.celestus .virtue-input.gd {
+.celestus .virtue-meter.gd {
   background-image: linear-gradient(
     to right,
     var(--virtue-color-gd-active-start) 0%,
@@ -60,7 +100,7 @@
     var(--virtue-color-gd-inactive) var(--virtue-active-percent) 100%
   );
 }
-.celestus .virtue-input.wd {
+.celestus .virtue-meter.wd {
   background-image: linear-gradient(
     to right,
     var(--virtue-color-wd-active-start) 0%,
@@ -68,7 +108,7 @@
     var(--virtue-color-wd-inactive) var(--virtue-active-percent) 100%
   );
 }
-.celestus .virtue-input.hp {
+.celestus .virtue-meter.hp {
   background-image: linear-gradient(
     to right,
     var(--virtue-color-hp-active-start) 0%,
@@ -77,7 +117,7 @@
   );
 }
 
-.celestus .virtue-input input {
+.celestus .virtue-meter input {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,12 +134,20 @@
   line-height: 100%;
   cursor: pointer;
 }
-.celestus .virtue-input input:focus {
+.celestus .edit .virtue-meter input {
   opacity: 100%;
   background-color: #0003;
   height: min-content;
 }
-.celestus .virtue-input label {
+.celestus .edit .virtue-meter .virtue-input-value {
+  display: none;
+}
+.celestus .virtue-meter input:focus {
+  opacity: 100%;
+  background-color: #0003;
+  height: min-content;
+}
+.celestus .virtue-meter label {
   display: block;
   font-weight: normal;
   font-size: 1rem;
@@ -108,17 +156,53 @@
   width: 100%;
   text-align: center;
 }
-.celestus .virtue-input:has(input:focus) label {
+.celestus .virtue-meter:has(input:focus) label {
   opacity: 0%;
   height: 0px;
+}
+.celestus .edit .virtue-meter label {
+  display: none;
+  font-size: 0.75rem;
+  flex: 0;
+  padding: 0 0.5rem;
+}
+.celestus .virtue-meter .virtue-max-label {
+  display: none;
+}
+.celestus .edit .virtue-meter label.virtue-max-label {
+  display: block;
+}
+.celestus .edit .virtue-meter:has(input:focus) label.virtue-max-label {
+  opacity: 100%;
+  height: auto;
+}
+
+.celestus .edit .virtue-meter .virtue-input-max {
+  display: flex;
+  position: relative;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.celestus .virtue-meter .virtue-input-max label {
+  display: none;
+}
+.celestus .edit .virtue-meter .virtue-input-max label {
+  display: flex;
+  flex: 1;
+}
+.celestus .edit .virtue-meter:has(input:focus) .virtue-input-max label {
+  opacity: 100%;
+  height: auto;
+}
+.celestus .edit .virtue-meter .virtue-input-max input {
+  flex: 2;
 }
 
 /* Virtues grid */
 .virtue-grid {
   display: grid;
   position: relative;
-  grid-template-columns: 2rem min-content min-content;
-  width: 24rem;
+  grid-template-columns: 2rem min-content;
   border-collapse: collapse;
   column-gap: var(--spacing-sm);
   row-gap: var(--spacing-sm);

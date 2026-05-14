@@ -13,6 +13,15 @@ const { ux, api } = foundry.applications;
 export default class CelestusSheet extends foundry.applications.api.HandlebarsApplicationMixin(
   api.DocumentSheetV2,
 ) {
+  // Manually redefining for type def
+  /**
+   * The HTMLElement which renders this Application into the DOM.
+   * @type {HTMLElement}
+   */
+  get element() {
+    return super.element;
+  }
+
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["celestus"],
@@ -46,7 +55,7 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
    * @type {typeof CelestusSheet.MODES[keyof typeof CelestusSheet.MODES]}
    * @protected
    */
-  _mode = CelestusSheet.MODES.EDIT;
+  _mode = CelestusSheet.MODES.USE;
 
   /**
    * Is the sheet in edit mode?
@@ -93,6 +102,7 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.forEach((dd) => dd.bind(this.element));
+    this._bindEditToggle();
   }
 
   //==================================================================
@@ -332,5 +342,17 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
     }
 
     return document;
+  }
+
+  /**
+   * Binds onChange events for edit mode toggle
+   */
+  _bindEditToggle() {
+    this.element.querySelector("#toggle-edit").addEventListener("click", () => {
+      this._mode = this.inUse
+        ? CelestusSheet.MODES.EDIT
+        : CelestusSheet.MODES.USE;
+      this.render();
+    });
   }
 }
