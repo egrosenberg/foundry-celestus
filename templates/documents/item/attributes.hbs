@@ -1,0 +1,122 @@
+<section class="tab attributes {{tabs.attributes.cssClass}} {{ifThen inUse "" " edit"}}" data-group="primary"
+  data-tab="attributes">
+  <button type="button" class="icon-button toggle-button {{ifThen inUse "" " active"}}" id="toggle-edit"
+    style="position:sticky; top:0; left:1rem; margin-top: -2rem; display: none;">
+    <i class="fa-solid fa-wrench"></i>
+  </button>
+  <div class="vstack gap-lg align-stretch p-lg">
+    <div class="vstack gap-md">
+      <div class="vstack gap-xs px-sm">
+        <h4>Description</h4>
+        <prose-mirror name="system.description" value="{{system.description}}" collaborate="true"
+          data-document-uuid="{{document.uuid}}" toggled>
+          {{{ system.description }}}
+        </prose-mirror>
+      </div>
+      <h4>Vitals</h4>
+      <div class="hstack gap-md">
+        {{
+        formGroup
+        systemFields.hp
+        rootId=../sysId
+        value=system.hp
+        classes="flex1"
+        label=(localize "CELESTUS.VitalHealth")
+        }}
+        {{
+        formGroup
+        systemFields.gd
+        rootId=../sysId
+        value=system.gd
+        classes="flex1"
+        label=(localize "CELESTUS.VitalGuard")
+        }}
+        {{
+        formGroup
+        systemFields.wd
+        rootId=../sysId
+        value=system.wd
+        classes="flex1"
+        label=(localize "CELESTUS.VitalWard")
+        }}
+      </div>
+    </div>
+    <div class="hstack gap-lg">
+      {{!-- Damage Resists --}}
+      <div class="vstack gap-md">
+        <h4>Damage resists</h4>
+        {{#each damageResist}}
+        <div class="hstack gap-md">
+          {{formGroup
+          fields.flat
+          rootId=../sysId
+          value=values.flat
+          label=labels.flat
+          }}{{formGroup
+          fields.percent
+          rootId=../sysId
+          value=values.percent
+          label=labels.percent
+          }}
+        </div>
+        {{/each}}
+      </div>
+      {{!-- Damage Bonuses --}}
+      <div class="vstack gap-md">
+        <h4>Damage bonuses</h4>
+        {{#each damageBonus}}
+        <div class="hstack gap-md">
+          {{formGroup
+          fields.flat
+          rootId=../sysId
+          value=values.flat
+          label=labels.flat
+          }}{{formGroup
+          fields.percent
+          rootId=../sysId
+          value=values.percent
+          label=labels.percent
+          }}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{!-- You can always... options --}}
+    <div class="vstack gap-sm align-stretch">
+      <div class="hstack justify-space-between">
+        <h4>You can always...</h4>
+        <button class="icon-button small add-index" type="button" data-name="system.canAlways" data-default-value='""'>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      {{#each system.canAlways}}
+      <div class="hstack gap-md align-stretch">
+        <input name="system.canAlways.{{@index}}" value="{{.}}" class="flex-1">
+        <button class="icon-button small destructive remove-index" type="button" data-name="system.canAlways"
+          data-index="{{@index}}">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+    {{!-- Misc. abilities --}}
+    <div class="vstack gap-sm align-stretch">
+      <div class="hstack justify-space-between">
+        <h4>Misc. abilities</h4>
+        <button class="icon-button small add-index" type="button" data-name="system.abilities" data-default-value='""'>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      {{#each system.abilities}}
+      <div class="hstack gap-md align-stretch">
+        <input name="system.abilities.{{@index}}" value="{{.}}" class="flex-1">
+        <button class="icon-button small destructive remove-index" type="button" data-name="system.abilities"
+          data-index="{{@index}}">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+
+  </div>
+</section>

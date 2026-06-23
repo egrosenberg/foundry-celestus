@@ -1,17 +1,14 @@
-<section
-  class="tab items {{tabs.items.cssClass}}"
-  data-group="primary"
-  data-tab="items"
->
+<section class="tab items {{tabs.items.cssClass}}" data-group="primary" data-tab="items">
   <div class="vstack gap-sm">
     {{#each items}}
-      <div
-        class="hstack gap-md justify-space-between item-edit"
-        data-document-uuid="{{this.uuid}}"
-      >
-        <div>{{this.name}}</div>
-        <div>{{this.type}}</div>
-      </div>
+    <div class="hstack gap-md justify-space-between item-edit" data-document-uuid="{{this.uuid}}">
+      <div>{{this.name}}</div>
+      <div>{{this.type}}</div>
+      <button class="icon-button small destructive remove-item" type="button" data-index="{{@index}}"
+        data-document-uuid="{{this.uuid}}">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
+    </div>
     {{/each}}
   </div>
 </section>

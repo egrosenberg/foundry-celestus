@@ -182,6 +182,23 @@ export default class CelestusActorSheet extends CelestusSheet {
         item?.sheet.render(true);
       });
     }
+    // Delete items
+    const itemDeletes = this.element.querySelectorAll(".remove-item");
+    for (const control of itemDeletes) {
+      control.addEventListener("click", async (event) => {
+        event.stopPropagation();
+        const item = getDocument(event.currentTarget);
+        if (!item)
+          return ui.notifications.error("Unable to find item to remove");
+        const consent = await foundry.applications.api.DialogV2.confirm({
+          content:
+            "Are you sure you want to delete this item? This action cannot be undone.",
+          rejectClose: false,
+          modal: true,
+        });
+        if (consent) return item.delete();
+      });
+    }
   }
 
   _onRenderVirtues(context) {

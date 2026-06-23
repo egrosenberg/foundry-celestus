@@ -27,6 +27,8 @@ function damageModifier() {
  * Base data model for equippable items
  */
 export default class BaseEquipmentModel extends foundry.abstract.TypeDataModel {
+  isEquipment = true;
+
   /** @inheritdoc */
   static defineSchema() {
     return {
@@ -45,9 +47,9 @@ export default class BaseEquipmentModel extends foundry.abstract.TypeDataModel {
           { all: damageModifier() },
         ),
       ),
-      armor: new NumberField({ initial: 0, integer: true }),
-      gd: new NumberField({ initial: 0, integer: true }),
-      wd: new NumberField({ initial: 0, integer: true }),
+      hp: new NumberField({ initial: 0, integer: true, required: true }),
+      gd: new NumberField({ initial: 0, integer: true, required: true }),
+      wd: new NumberField({ initial: 0, integer: true, required: true }),
       skills: new ArrayField(new DocumentUUIDField()),
       canAlways: new ArrayField(new StringField()),
       abilities: new ArrayField(new StringField()),

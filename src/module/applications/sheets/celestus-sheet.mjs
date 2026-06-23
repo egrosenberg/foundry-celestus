@@ -7,6 +7,7 @@
  */
 
 import C_CONST from "../../const.mjs";
+import resolvePath from "../../lib/object/resolve-path.mjs";
 
 const { ux, api } = foundry.applications;
 
@@ -29,6 +30,7 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
       submitOnChange: true,
       closeOnSubmit: false,
     },
+    scrollY: [".sheet"],
     window: {
       resizable: true,
     },
@@ -103,6 +105,8 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
     await super._onRender(context, options);
     this.#dragDrop.forEach((dd) => dd.bind(this.element));
     this._bindEditToggle();
+    this._bindArrayControls();
+    this._autoSelectNumberInputs();
   }
 
   //==================================================================
@@ -214,8 +218,6 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
    * @protected
    */
   async _onDrop(event) {
-    console.log("TESTSTSETE");
-
     if (!this.isEditable) return;
     const data = ux.TextEditor.implementation.getDragEventData(event);
     const allowed = Hooks.call(
@@ -353,6 +355,75 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
         ? CelestusSheet.MODES.EDIT
         : CelestusSheet.MODES.USE;
       this.render();
+    });
+  }
+
+  /**
+   * Button events for controlling elements in an array
+   */
+  _bindArrayControls() {
+    // Add item to array
+    this.element.querySelectorAll(".add-index").forEach((element) =>
+      element.addEventListener("click", (ev) => {
+        const name = ev.currentTarget.dataset.name;
+        const current = resolvePath(this.document, name);
+        const defaultValue = JSON.parse(ev.currentTarget.dataset.defaultValue);
+
+        if (!current) {
+          return ui.notifications.error(
+            `Unable to resolve attribute '${name}'`,
+          );
+        }
+        if (!Array.isArray(current)) {
+          return ui.notifications.error("Provided attribute was not Array");
+        }
+
+        return this.document.update({
+          [`${name}`]: [...current, defaultValue],
+        });
+      }),
+    );
+
+    // Remove item from array
+    this.element.querySelectorAll(".remove-index").forEach((element) =>
+      element.addEventListener("click", async (ev) => {
+        const index = ev.currentTarget.dataset.index;
+        const name = ev.currentTarget.dataset.name;
+        const current = resolvePath(this.document, name);
+
+        if (!index) {
+          return ui.notifications.error("No index provided to remove");
+        }
+        if (!current) {
+          return ui.notifications.error(
+            `Unable to resolve attribute '${name}'`,
+          );
+        }
+        if (!Array.isArray(current)) {
+          return ui.notifications.error("Provided attribute was not Array");
+        }
+
+        const consent = await foundry.applications.api.DialogV2.confirm({
+          content:
+            'Are you sure you want to remove this "You can always..." option? This action cannot be undone',
+          rejectClose: false,
+          modal: true,
+        });
+        if (consent) {
+          current.splice(index, 1);
+          return this.document.update({
+            [`${name}`]: current,
+          });
+        }
+      }),
+    );
+  }
+
+  _autoSelectNumberInputs() {
+    this.element.querySelectorAll("input[type=number]").forEach((element) => {
+      element.addEventListener("focus", (ev) => {
+        ev.currentTarget.select();
+      });
     });
   }
 }

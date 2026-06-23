@@ -47,8 +47,28 @@ html {
   --color-action: var(--color-dark-4);
   --color-action-hover: var(--color-dark-3);
   --color-action-ghost: var(--color-dark-2);
+  --color-action-danger: var(--color-blood-2);
+  --color-action-danger-hover: var(--color-blood-1);
+  --color-action-danger-ghost: var(--color-blood-4);
 
   color: var(--color-text);
+}
+
+/* 
+ * ==================================================================
+ * RESET
+ * ==================================================================
+*/
+
+.celestus ul,
+.celestus ol {
+  margin-block: 0;
+}
+
+.celestus p,
+.celestus :is(h1, h2, h3, h4, h5, h6) {
+  padding: 0px;
+  margin: 0px;
 }
 
 /* 
@@ -121,9 +141,63 @@ html {
   justify-content: space-evenly;
 }
 
+/* Flex children */
+.flex-0 {
+  flex: 0;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+.flex-4 {
+  flex: 4;
+}
+.flex-5 {
+  flex: 5;
+}
+.flex-6 {
+  flex: 6;
+}
+
+/* Flex wrap */
+.flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+.flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
 /* Text styles */
-.small-caps {
+.small-caps,
+sc {
   font-variant: small-caps;
+}
+
+.text-align-center {
+  text-align: center;
+}
+.text-align-end {
+  text-align: end;
+}
+.text-align-justify {
+  text-align: justify;
+}
+.text-align-left {
+  text-align: left;
+}
+.text-align-right {
+  text-align: right;
+}
+.text-align-start {
+  text-align: start;
 }
 
 /* Grid */

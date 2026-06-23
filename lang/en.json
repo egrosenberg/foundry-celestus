@@ -1,4 +1,7 @@
 {
+  "TYPES": {
+    "Item.equipment": "Equipment"
+  },
   "CELESTUS": {
     "VirtueVigor": "Vigor",
     "VirtueClarity": "Clarity",
@@ -23,6 +26,21 @@
     "DamageRadiant": "Radiant",
     "DamageShadow": "Shadow",
     "DamageWater": "Water",
+    "DamageUniversal": "Universal",
+
+    "Damage.air": "Air",
+    "Damage.earth": "Earth",
+    "Damage.fire": "Fire",
+    "Damage.physical": "Physical",
+    "Damage.piercing": "Piercing",
+    "Damage.poison": "Poison",
+    "Damage.radiant": "Radiant",
+    "Damage.shadow": "Shadow",
+    "Damage.water": "Water",
+    "Damage.all": "Universal",
+
+    "DamageModResist": "Resistance",
+    "DamageModIncrease": "Damage",
 
     "SHEET": {
       "Labels": {
@@ -54,11 +72,15 @@
               "wdValue": "Current ᴡᴅ",
               "wdOffset": "ᴡᴅ offset"
             }
-          }
+          },
+          "DamageFlatSuffix": "(flat)",
+          "DamagePercentSuffix": "(percent)"
         },
         "Tabs": {
           "bio": "Bio",
-          "items": "Items"
+          "items": "Items",
+          "attributes": "Attributes",
+          "info": "Overview"
         }
       }
     }

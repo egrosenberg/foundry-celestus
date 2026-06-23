@@ -16,6 +16,51 @@
   --virtue-active-percent: 100%;
 }
 
+.celestus.sheet .window-content {
+  overflow-y: auto;
+  padding: 0;
+}
+.celestus.sheet .window-content nav.tabs {
+  top: 0;
+  position: sticky;
+  background-color: #0008;
+}
+
+.celestus.sheet hr {
+  margin-block: 0;
+}
+
+.celestus.sheet {
+  user-select: text;
+}
+
+/* Prosemirror */
+.celestus.sheet .prosemirror,
+.celestus.sheet prose-mirror {
+  border: thin solid var(--color-cool-4);
+  border-radius: var(--spacing-xs);
+}
+.celestus.sheet .prosemirror menu,
+.celestus.sheet prose-mirror menu {
+  border-radius: 0;
+}
+/* Fix for toggle button visual */
+.celestus.sheet .prosemirror button.icon.toggle,
+.celestus.sheet prose-mirror button.icon.toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.celestus.sheet .prosemirror:not(.active):hover button.icon.toggle,
+.celestus.sheet prose-mirror:not(.active):hover button.icon.toggle {
+  display: flex;
+}
+/* Padding fix for prosemirror content (with border in mind) */
+.celestus.sheet .prosemirror .editor-content,
+.celestus.sheet prose-mirror .editor-content {
+  padding-inline: var(--spacing-md);
+}
+
 /**
  * ===============================================
  * Misc. Inputs
@@ -45,8 +90,19 @@
   border-radius: 1rem;
   box-shadow: none;
 }
+.celestus .icon-button.small {
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 0.75rem;
+}
+.celestus .icon-button.destructive {
+  background-color: var(--color-action-danger);
+}
 .celestus .icon-button:hover {
   background-color: var(--color-action-hover);
+}
+.celestus .icon-button.destructive:hover {
+  background-color: var(--color-action-danger-hover);
 }
 
 .celestus button.toggle-button {
@@ -233,3 +289,40 @@
  * End VIRTUES
  * ===============================================
  */
+
+/**
+ * ===============================================
+ * Misc. formatting recipes
+ * ===============================================
+ */
+
+tag {
+  border-radius: 0.5rem;
+  background-color: var(--color-dark-2);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  padding-inline: var(--spacing-sm);
+  padding-block: var(--spacing-xs);
+}
+tag[palette="blood"] {
+  background-color: var(--color-blood-2);
+}
+tag[palette="soul"] {
+  background-color: var(--color-soul-1);
+}
+tag[palette="mind"] {
+  background-color: var(--color-mind-2);
+}
+tag[palette="bounty"] {
+  background-color: var(--color-bounty-5);
+}
+tag[palette="hp"] {
+  background-color: var(--virtue-color-hp-active);
+}
+tag[palette="gd"] {
+  background-color: var(--virtue-color-gd-active);
+}
+tag[palette="wd"] {
+  background-color: var(--virtue-color-wd-active);
+}

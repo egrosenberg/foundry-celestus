@@ -4,6 +4,8 @@ import BaseEquipmentModel from "./module/data/item/equipment/equipment.mjs";
 import C_CONST from "./module/const.mjs";
 import CelestusActorSheet from "./module/applications/sheets/actors/actor-sheet.mjs";
 import CelestusActor from "./module/documents/actor/actor.mjs";
+import CelestusEquipmentSheet from "./module/applications/sheets/items/equipment-sheet.mjs";
+import registerHbsHelpers from "./module/applications/sheets/hbs/register-hbs-helpers.mjs";
 
 globalThis.CELESTUS = CELESTUS;
 
@@ -18,7 +20,7 @@ Hooks.once("init", function () {
   };
 
   // Register Sheets
-  const { Actors } = foundry.documents.collections;
+  const { Actors, Items } = foundry.documents.collections;
 
   // Register Actor Sheet
   Actors.registerSheet(C_CONST.systemID, CelestusActorSheet, {
@@ -26,7 +28,16 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "CELESTUS.SHEET.Labels.Character",
   });
+  // Register equipment sheet
+  Items.registerSheet(C_CONST.systemID, CelestusEquipmentSheet, {
+    types: ["equipment"],
+    makeDefault: true,
+    label: "CELESTUS.SHEET.Labels.Equipment",
+  });
 
   // Register Actor Document
   CONFIG.Actor.documentClass = CelestusActor;
+
+  // Register handlebars helpers
+  registerHbsHelpers();
 });

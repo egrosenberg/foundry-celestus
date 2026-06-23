@@ -1,0 +1,47 @@
+{{!-- Damage resists --}}
+{{#each damageResist}}
+{{#if values.flat}}
+<tag palette="bounty">
+  {{numberFormat (invert values.flat) sign=true}}
+  {{#if (eq key "all")}}
+  {{else}}
+  {{localize (concat "CELESTUS.Damage." key)}}
+  {{/if}}
+  damage taken
+</tag>
+{{/if}}
+{{#if values.percent}}
+<tag palette="bounty">
+  {{numberFormat (mul values.percent 100) sign=true}}%
+  {{#if (eq key "all")}}
+  damage
+  {{else}}
+  {{localize (concat "CELESTUS.Damage." key)}}
+  {{/if}}
+  resist
+</tag>
+{{/if}}
+{{/each}}
+{{!-- Damage bonuses --}}
+{{#each damageBonus}}
+{{#if values.flat}}
+<tag palette="bounty">
+  {{numberFormat values.flat sign=true}}
+  {{#if (eq key "all")}}
+  {{else}}
+  {{localize (concat "CELESTUS.Damage." key)}}
+  {{/if}}
+  damage
+</tag>
+{{/if}}
+{{#if values.percent}}
+<tag palette="bounty">
+  {{numberFormat (mul values.percent 100) sign=true}}%
+  {{#if (eq key "all")}}
+  {{else}}
+  {{localize (concat "CELESTUS.Damage." key)}}
+  {{/if}}
+  damage
+</tag>
+{{/if}}
+{{/each}}

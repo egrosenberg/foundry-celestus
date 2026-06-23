@@ -1,0 +1,25 @@
+{{!-- Vitals --}}
+{{#if system.hp}}
+<tag palette="hp">
+  {{numberFormat system.hp sign=true}}
+  <sc>
+    {{localize "CELESTUS.VitalHealthAbbr"}}
+  </sc>
+</tag>
+{{/if}}
+{{#if system.gd}}
+<tag palette="blood">
+  {{numberFormat system.gd sign=true}}
+  <sc>
+    {{localize "CELESTUS.VitalGuardAbbr"}}
+  </sc>
+</tag>
+{{/if}}
+{{#if system.wd}}
+<tag palette="soul">
+  {{numberFormat system.wd sign=true}}
+  <sc>
+    {{localize "CELESTUS.VitalWardAbbr"}}
+  </sc>
+</tag>
+{{/if}}
