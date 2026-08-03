@@ -94,7 +94,8 @@
           },
           "DamageFlatSuffix": "(flat)",
           "DamagePercentSuffix": "(percent)",
-          "classSlug": "Class id (must be unique)"
+          "classSlug": "Class id (must be unique)",
+          "subclassKey": "Class id (must match class)"
         },
         "Tabs": {
           "bio": "Bio",

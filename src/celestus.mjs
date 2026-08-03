@@ -9,6 +9,7 @@ import registerHbsHelpers from "./module/applications/sheets/hbs/register-hbs-he
 import KeeperClassModel from "./module/data/item/equipment/keeper-class.mjs";
 import SubclassModel from "./module/data/item/equipment/subclass.mjs";
 import CelestusKeeperClassSheet from "./module/applications/sheets/items/keeper-class-sheet.mjs";
+import CelestusSubclassSheet from "./module/applications/sheets/items/subclass-sheet.mjs";
 
 globalThis.CELESTUS = CELESTUS;
 
@@ -45,8 +46,8 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "CELESTUS.SHEET.Labels.KeeperClass",
   });
-  // Register subclass sheet
-  Items.registerSheet(C_CONST.systemID, CelestusEquipmentSheet, {
+  // Register class sheet
+  Items.registerSheet(C_CONST.systemID, CelestusSubclassSheet, {
     types: ["subclass"],
     makeDefault: true,
     label: "CELESTUS.SHEET.Labels.Subclass",
