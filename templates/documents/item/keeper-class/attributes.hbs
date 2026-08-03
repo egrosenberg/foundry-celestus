@@ -1,0 +1,61 @@
+<section class="tab attributes {{tabs.attributes.cssClass}} {{ifThen inUse "" " edit"}}" data-group="primary"
+  data-tab="attributes">
+  <button type="button" class="icon-button toggle-button {{ifThen inUse "" " active"}}" id="toggle-edit"
+    style="position:sticky; top:0; left:1rem; margin-top: -2rem; display: none;">
+    <i class="fa-solid fa-wrench"></i>
+  </button>
+  <div class="vstack gap-lg align-stretch p-lg">
+    <div class="vstack gap-md">
+      <div class="vstack gap-xs px-sm">
+        {{formGroup
+        systemFields.slug
+        rootId=../sysId
+        value=system.slug
+        label=(localize "CELESTUS.SHEET.Labels.Fields.classSlug")
+        }}
+        <h4>Description</h4>
+        <prose-mirror name="system.description" value="{{system.description}}" collaborate="true"
+          data-document-uuid="{{document.uuid}}" toggled>
+          {{{ system.description }}}
+        </prose-mirror>
+      </div>
+      <div class="vstack">
+        <label for="system.primaryVirtue">Primary virtue</label>
+        <select name="system.primaryVirtue">
+          {{selectOptions config.virtues selected=system.primaryVirtue labelAttr="label" localize=true}}
+        </select>
+      </div>
+      <div class="vstack gap-xs">
+        <h5>Vital Formulas</h5>
+        <div class="hstack gap-md py-sm">
+          {{#each vitalFormulas}}
+          {{formGroup
+          field
+          rootId=../sysId
+          value=value
+          label=label
+          }}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    {{!-- You can always... options --}}
+    <div class="vstack gap-sm align-stretch">
+      <div class="hstack justify-space-between">
+        <h4>You can always...</h4>
+        <button class="icon-button small add-index" type="button" data-name="system.canAlways" data-default-value='""'>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      {{#each system.canAlways}}
+      <div class="hstack gap-md align-stretch">
+        <input name="system.canAlways.{{@index}}" value="{{.}}" class="flex-1">
+        <button class="icon-button small destructive remove-index" type="button" data-name="system.canAlways"
+          data-index="{{@index}}">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

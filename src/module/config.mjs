@@ -2,13 +2,16 @@ const CELESTUS = {};
 
 /**
  * @import {
- *   VirtueConfiguration, VitalConfiguration, DamageType, DamageTypeConfiguration
- * } from "./_types.mjs";
+ *    VirtueConfiguration, Virtue,
+ *    Vital, VitalConfiguration,
+ *    Affinity, AffinityConfiguration,
+ *    DamageType, DamageTypeConfiguration
+ * } from "./_types.d.ts";
  */
 
 /**
  * Enum for Virtues
- * @enum {VirtueConfiguration}
+ * @type {Record<Virtue, VirtueConfiguration>}
  */
 CELESTUS.virtues = {
   vig: {
@@ -30,9 +33,14 @@ CELESTUS.virtues = {
 
 /**
  * Enum for Vitals
- * @enum {VitalConfiguration}
+ * @type {Record<Vital, VitalConfiguration>}
  */
 CELESTUS.vitals = {
+  hp: {
+    label: "CELESTUS.VitalHealth",
+    abbreviation: "CELESTUS.VitalHealthAbbr",
+    fullkey: "health",
+  },
   gd: {
     label: "CELESTUS.VitalGuard",
     abbreviation: "CELESTUS.VitalGuardAbbr",
@@ -43,16 +51,34 @@ CELESTUS.vitals = {
     abbreviation: "CELESTUS.VitalWardAbbr",
     fullkey: "ward",
   },
-  hp: {
-    label: "CELESTUS.VitalHealth",
-    abbreviation: "CELESTUS.VitalHealthAbbr",
-    fullkey: "health",
+};
+
+/**
+ * Enum for Subclass Affinities
+ * @type {Record<Affinity, AffinityConfiguration>}
+ */
+CELESTUS.affinities = {
+  solar: {
+    label: "CELESTUS.AffinitySolar",
+    palette: "blood",
+  },
+  lunar: {
+    label: "CELESTUS.AffinityLunar",
+    palette: "soul",
+  },
+  brutal: {
+    label: "CELESTUS.AffinityBrutal",
+    palette: "blood",
+  },
+  deft: {
+    label: "CELESTUS.AffinityDeft",
+    palette: "soul",
   },
 };
 
 /**
  * Enum for base damage types
- * @enum {DamageTypeConfiguration}
+ * @type {Record<DamageType, DamageTypeConfiguration>}
  */
 CELESTUS.damageTypes = {
   air: {
@@ -92,5 +118,17 @@ CELESTUS.damageTypes = {
     vital: "wd",
   },
 };
+
+/**
+ * Thresholds and localization labels for different glory amounts
+ * @type {[number, string][]}
+ */
+CELESTUS.gloryThresholds = [
+  [0, "CELESTUS.Glory0"],
+  [3, "CELESTUS.Glory3"],
+  [6, "CELESTUS.Glory6"],
+  [9, "CELESTUS.Glory9"],
+  [12, "CELESTUS.Glory12"],
+];
 
 export default CELESTUS;

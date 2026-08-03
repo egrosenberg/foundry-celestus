@@ -1,0 +1,36 @@
+<section class="tab info {{tabs.info.cssClass}} {{ifThen inUse "" " edit"}}" data-group="primary" data-tab="info">
+  <div class="vstack gap-md p-lg">
+    <input name="name" type="text" value="{{document.name}}" class="actor-name text-align-center">
+    <hr>
+    <div class="vstack gap-xs px-sm">
+      {{{ system.description }}}
+      {{#if system.canAlways.length}}
+      <div>
+        <h6>You can always...</h6>
+        <ul>
+          {{#each system.canAlways}}
+          <li>{{.}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
+      {{#each system.abilities}}
+      {{.}}
+      {{/each}}
+    </div>
+    <div class="vstack gap-xs align-center mt-md">
+      <div>
+        Virtue: <sc>{{system.primaryVirtue}}</sc>
+      </div>
+      <div>
+        {{#each system.vitalFormulas as |value key|}}
+        {{#if @index}}
+        //
+        {{/if}}
+        {{value}} <sc>{{key}}</sc>
+        {{/each}}
+      </div>
+    </div>
+
+  </div>
+</section>

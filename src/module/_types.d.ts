@@ -35,6 +35,8 @@ export interface VitalConfiguration extends BasicConfiguration {}
 export interface VirtueConfiguration extends BasicConfiguration {}
 
 //======================================
+
+//======================================
 // DAMAGE
 //======================================
 
@@ -71,4 +73,20 @@ export interface DamageTypeConfiguration {
    * An SVG that represents the ability
    */
   icon?: string;
+}
+
+//======================================
+
+// Used for subclasses
+export type Affinity = "solar" | "lunar" | "deft" | "brutal";
+
+export interface AffinityConfiguration {
+  /**
+   * Localized label
+   */
+  label: string;
+  /**
+   * Palette used for styling
+   */
+  palette: string;
 }

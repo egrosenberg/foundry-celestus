@@ -1,3 +1,5 @@
+import { Virtue, Vital } from "../../../_types";
+
 interface DamageModifier {
   flat: number;
   percent: number;
@@ -46,5 +48,15 @@ declare module "./equipment.mjs" {
      * Misc. abilities granted to actor
      */
     abilities: string[];
+  }
+
+  interface KeeperClassModel extends BaseEquipmentModel {
+    title: string;
+
+    slug: string;
+
+    primaryVirtue: Virtue;
+
+    virtueFormulas: Record<Vital, string>;
   }
 }

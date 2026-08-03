@@ -38,6 +38,12 @@
     "Item": {
       "equipment": {
         "htmlFields": ["description"]
+      },
+      "keeperClass": {
+        "htmlFields": ["description"]
+      },
+      "subclass": {
+        "htmlFields": ["description"]
       }
     }
   },

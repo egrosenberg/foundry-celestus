@@ -1,6 +1,11 @@
 {
   "TYPES": {
-    "Item.equipment": "Equipment"
+    "Item.equipment": "Equipment",
+    "Item.keeperClass": "Class",
+    "Item.subclass": "Subclass",
+
+    "Actor.keeper": "Keeper",
+    "Actor.npcs": "NPC"
   },
   "CELESTUS": {
     "VirtueVigor": "Vigor",
@@ -16,6 +21,11 @@
     "VitalGuardAbbr": "gd",
     "VitalWardAbbr": "wd",
     "VitalHealthAbbr": "hp",
+
+    "AffinitySolar": "Solar",
+    "AffinityLunar": "Lunar",
+    "AffinityBrutal": "Brutal",
+    "AffinityDeft": "Deft",
 
     "DamageAir": "Air",
     "DamageEarth": "Earth",
@@ -42,9 +52,18 @@
     "DamageModResist": "Resistance",
     "DamageModIncrease": "Damage",
 
+    "Glory0": "Untested",
+    "Glory3": "Steadfast",
+    "Glory6": "Valiant",
+    "Glory9": "Radiant",
+    "Glory12": "Ascendant",
+
     "SHEET": {
       "Labels": {
         "Character": "Character",
+        "Equipment": "Equipment",
+        "KeeperClass": "Class",
+        "Subclass": "Subclass",
         "Fields": {
           "actor": {
             "maxBase": "Max",
@@ -74,7 +93,8 @@
             }
           },
           "DamageFlatSuffix": "(flat)",
-          "DamagePercentSuffix": "(percent)"
+          "DamagePercentSuffix": "(percent)",
+          "classSlug": "Class id (must be unique)"
         },
         "Tabs": {
           "bio": "Bio",

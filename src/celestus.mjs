@@ -6,6 +6,9 @@ import CelestusActorSheet from "./module/applications/sheets/actors/actor-sheet.
 import CelestusActor from "./module/documents/actor/actor.mjs";
 import CelestusEquipmentSheet from "./module/applications/sheets/items/equipment-sheet.mjs";
 import registerHbsHelpers from "./module/applications/sheets/hbs/register-hbs-helpers.mjs";
+import KeeperClassModel from "./module/data/item/equipment/keeper-class.mjs";
+import SubclassModel from "./module/data/item/equipment/subclass.mjs";
+import CelestusKeeperClassSheet from "./module/applications/sheets/items/keeper-class-sheet.mjs";
 
 globalThis.CELESTUS = CELESTUS;
 
@@ -17,6 +20,8 @@ Hooks.once("init", function () {
 
   CONFIG.Item.dataModels = {
     equipment: BaseEquipmentModel,
+    keeperClass: KeeperClassModel,
+    subclass: SubclassModel,
   };
 
   // Register Sheets
@@ -33,6 +38,18 @@ Hooks.once("init", function () {
     types: ["equipment"],
     makeDefault: true,
     label: "CELESTUS.SHEET.Labels.Equipment",
+  });
+  // Register class sheet
+  Items.registerSheet(C_CONST.systemID, CelestusKeeperClassSheet, {
+    types: ["keeperClass"],
+    makeDefault: true,
+    label: "CELESTUS.SHEET.Labels.KeeperClass",
+  });
+  // Register subclass sheet
+  Items.registerSheet(C_CONST.systemID, CelestusEquipmentSheet, {
+    types: ["subclass"],
+    makeDefault: true,
+    label: "CELESTUS.SHEET.Labels.Subclass",
   });
 
   // Register Actor Document
