@@ -106,7 +106,6 @@ export default class CelestusActor extends foundry.documents.Actor {
         });
       } else {
         if (item.system.hands === 1) {
-          ui.notifications.info("one handed item...");
           // figure out which hand to equip in
           const preferredHand = item.system.primaryHand;
           const backupHand = preferredHand === 1 ? 2 : 1;
@@ -121,7 +120,6 @@ export default class CelestusActor extends foundry.documents.Actor {
 
           // if preferred hand is in use
           if (existingPrimary) {
-            ui.notifications.info("hand in use");
             // If can offhand, check if other hand is in use
             if (item.system.tags.canOffhand) {
               const existingSecondary = this.items.find(
