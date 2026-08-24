@@ -390,6 +390,10 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
         const index = ev.currentTarget.dataset.index;
         const name = ev.currentTarget.dataset.name;
         const current = resolvePath(this.document, name);
+        const noun = ev.currentTarget.dataset.noun ?? "item";
+        const requiresConsent = ev.currentTarget.dataset.confirm !== "false";
+
+        console.log(current);
 
         if (!index) {
           return ui.notifications.error("No index provided to remove");
@@ -403,14 +407,16 @@ export default class CelestusSheet extends foundry.applications.api.HandlebarsAp
           return ui.notifications.error("Provided attribute was not Array");
         }
 
-        const consent = await foundry.applications.api.DialogV2.confirm({
-          content:
-            'Are you sure you want to remove this "You can always..." option? This action cannot be undone',
-          rejectClose: false,
-          modal: true,
-        });
+        const consent =
+          !requiresConsent ||
+          (await foundry.applications.api.DialogV2.confirm({
+            content: `Are you sure you want to remove this ${noun}? This action cannot be undone`,
+            rejectClose: false,
+            modal: true,
+          }));
         if (consent) {
           current.splice(index, 1);
+          console.log(current);
           return this.document.update({
             [`${name}`]: current,
           });

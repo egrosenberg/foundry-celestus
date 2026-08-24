@@ -1,4 +1,4 @@
-import { Virtue, Vital } from "../../../_types";
+import { DamagePart, Virtue, Vital } from "../../../_types";
 
 interface DamageModifier {
   flat: number;
@@ -58,5 +58,19 @@ declare module "./equipment.mjs" {
     primaryVirtue: Virtue;
 
     virtueFormulas: Record<Vital, string>;
+  }
+
+  interface SubclassModel extends BaseEquipmentModel {
+    title: string;
+
+    classKey: string;
+
+    affinity: Virtue;
+  }
+
+  interface HeldItemModel extends BaseEquipmentModel {
+    hands: number;
+    isWeapon: boolean;
+    damageParts: { primary: DamagePart[]; secondary: DamagePart[] };
   }
 }

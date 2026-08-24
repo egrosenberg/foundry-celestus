@@ -98,6 +98,16 @@
 .celestus .icon-button.destructive {
   background-color: var(--color-action-danger);
 }
+.celestus .icon-button.ghost {
+  border: none;
+  outline: none;
+  color: var(--color-text);
+  background-color: transparent;
+  transition: opacity 0.5s;
+}
+.celestus .icon-button.ghost:hover {
+  background-color: var(--color-action-ghost);
+}
 .celestus .icon-button:hover {
   background-color: var(--color-action-hover);
 }

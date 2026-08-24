@@ -304,3 +304,29 @@ sc {
   padding-top: var(--spacing-3xl);
   padding-bottom: var(--spacing-3xl);
 }
+
+/* Width and height */
+.w-full {
+  width: 100%;
+}
+.w-half {
+  width: 50%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-25 {
+  width: 25%;
+}
+.h-full {
+  height: 100%;
+}
+.h-half {
+  height: 50%;
+}
+.h-75 {
+  height: 75%;
+}
+.h-25 {
+  height: 25%;
+}

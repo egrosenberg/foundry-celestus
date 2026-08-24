@@ -3,6 +3,7 @@
     "Item.equipment": "Equipment",
     "Item.keeperClass": "Class",
     "Item.subclass": "Subclass",
+    "Item.heldItem": "Held Item",
 
     "Actor.keeper": "Keeper",
     "Actor.npcs": "NPC"
@@ -64,6 +65,7 @@
         "Equipment": "Equipment",
         "KeeperClass": "Class",
         "Subclass": "Subclass",
+        "HeldItem": "Held Item",
         "Fields": {
           "actor": {
             "maxBase": "Max",

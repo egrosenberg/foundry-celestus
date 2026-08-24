@@ -199,6 +199,15 @@ export default class CelestusActorSheet extends CelestusSheet {
         if (consent) return item.delete();
       });
     }
+
+    // Equip items
+    const equipTriggers = this.element.querySelectorAll(".equip-item");
+    for (const element of equipTriggers) {
+      element.addEventListener("click", (event) => {
+        event.stopPropagation();
+        return this.actor.equipItem(event.currentTarget.dataset.documentId);
+      });
+    }
   }
 
   _onRenderVirtues(context) {

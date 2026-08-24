@@ -89,7 +89,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
      * @type {BaseEquipmentModel[]}
      */
     const equipment = this.parent.items
-      .filter((item) => item.system?.isEquipment)
+      .filter((item) => item.system?.isEquipment && item.system?.equipped)
       .map((item) => item.system);
 
     // Virtues are not based on equipment

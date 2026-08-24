@@ -75,6 +75,11 @@ export interface DamageTypeConfiguration {
   icon?: string;
 }
 
+type DamagePart = {
+  formula: string;
+  types: DamageType[];
+};
+
 //======================================
 
 // Used for subclasses

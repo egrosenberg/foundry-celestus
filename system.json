@@ -39,6 +39,9 @@
       "equipment": {
         "htmlFields": ["description"]
       },
+      "heldItem": {
+        "htmlFields": ["description"]
+      },
       "keeperClass": {
         "htmlFields": ["description"]
       },

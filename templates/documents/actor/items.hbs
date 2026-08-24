@@ -3,7 +3,11 @@
     {{#each items}}
     <div class="hstack gap-md justify-space-between item-edit" data-document-uuid="{{this.uuid}}">
       <div>{{this.name}}</div>
-      <div>{{this.type}}</div>
+      <div>{{localize (concat "TYPES.Item." this.type)}}</div>
+      <button class="toggle-button small equip-item {{ifThen this.system.equipped " active" "" }}" type="button"
+        data-document-id="{{this.id}}">
+        <i class="fa-solid fa-shield"></i>
+      </button>
       <button class="icon-button small destructive remove-item" type="button" data-index="{{@index}}"
         data-document-uuid="{{this.uuid}}">
         <i class="fa-solid fa-trash-can"></i>
