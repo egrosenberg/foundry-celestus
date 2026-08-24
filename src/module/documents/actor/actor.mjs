@@ -171,7 +171,7 @@ export default class CelestusActor extends foundry.documents.Actor {
           }
         } else {
           // multi-handed weapons unequip all other hands
-          const existing = this.items.find(
+          const existing = this.items.filter(
             (other) => other.system.equipped && other.system.equippedHand,
           );
           for (const i of existing) {

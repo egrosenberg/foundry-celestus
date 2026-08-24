@@ -1,12 +1,8 @@
 <section class="tab info {{tabs.info.cssClass}} {{ifThen inUse "" " edit"}}" data-group="primary" data-tab="info">
   <div class="vstack gap-md p-md">
     <input name="name" type="text" value="{{document.name}}" class="actor-name text-align-center">
-    {{!-- {{
-    formGroup
-    systemFields.description
-    rootId=../sysId
-    value=system.description
-    }} --}}
+    <img class="item-image" src="{{source.img}}" data-action="editImage" data-edit="img" alt="{{localize "
+      DOCUMENT.FIELDS.img.label"}}">
     <div class="hstack justify-center flex-wrap-wrap gap-sm">
       {{#if (and system.isWeapon system.damageParts.primary.length)}}
       <tag>

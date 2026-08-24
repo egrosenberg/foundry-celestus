@@ -55,5 +55,15 @@
       </div>
       {{/each}}
     </div>
+    <div class="vstack gap-sm">
+      <h6>Equipped</h6>
+      <div class="equipment-grid">
+        {{#each system.hands}}
+        <i class="fa-solid fa-hand-fist" style="transform:rotate(90deg) scaleY(-100%);"></i>
+        <img class="equipment-icon {{ifThen this.isSecondHand " inactive"}}" src="{{this.item.img}}">
+        <p class="{{ifThen this.isSecondHand " inactive"}}">{{this.item.name}}</p>
+        {{/each}}
+      </div>
+    </div>
   </div>
 </section>

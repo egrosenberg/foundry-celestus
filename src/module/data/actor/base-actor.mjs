@@ -178,4 +178,31 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     this.attributes.canAlways.value = canAlways;
     this.attributes.abilities.value = abilities;
   }
+
+  /**
+   * @type {{item: import("@common/documents/_types.mjs").ItemData, isSecondHand: boolean}}
+   */
+  get hands() {
+    const hand1 =
+      this.parent.items.find(
+        (item) => item.system.equippedHand === 1 && item.system.equipped,
+      ) ??
+      this.parent.items.find(
+        (item) => item.system.equipped && item.system.hands > 1,
+      );
+    const hand2 =
+      this.parent.items.find(
+        (item) => item.system.equippedHand === 2 && item.system.equipped,
+      ) ??
+      this.parent.items.find(
+        (item) => item.system.equipped && item.system.hands > 1,
+      );
+
+    return [
+      { item: hand1, isSecondHand: hand1?.system.equippedHand !== 1 },
+      ...(hand2
+        ? [{ item: hand2, isSecondHand: hand2.system.equippedHand !== 2 }]
+        : []),
+    ];
+  }
 }

@@ -132,6 +132,13 @@
   background-color: var(--color-action-hover);
 }
 
+.celestus .item-image {
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  align-self: center;
+}
+
 /**
  * ===============================================
  * Begin VIRTUES
@@ -297,6 +304,40 @@
 /**
  * ===============================================
  * End VIRTUES
+ * ===============================================
+ */
+
+/**
+ * ===============================================
+ * Begin EQUIPPED ITEM GRID 
+ * ===============================================
+ */
+
+.celestus .equipment-grid {
+  display: grid;
+  grid-template-columns: var(--spacing-md) var(--spacing-md) 4fr;
+  width: 15rem;
+  column-gap: var(--spacing-xs);
+}
+
+.celestus .equipment-grid .inactive {
+  opacity: 50%;
+}
+
+.celestus .equipment-grid .equipment-title {
+  line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.celestus .equipment-grid .equipment-icon {
+  width: var(--spacing-md);
+  height: var(--spacing-md);
+}
+
+/**
+ * ===============================================
+ * End EQUIPPED ITEM GRID 
  * ===============================================
  */
 
