@@ -1,3 +1,4 @@
+import { buildDamageString } from "../../../lib/damage/buildDamageString.mjs";
 import attributeField from "./lib/attribute-field.mjs";
 import { resourceField } from "./lib/resource-field.mjs";
 
@@ -13,6 +14,8 @@ const {
 /**
  * @import {ActorResources, ActorAttributes} from "./_types"
  * @import BaseEquipmentModel from "../item/equipment/equipment.mjs";
+ * @import HeldItemModel from "../item/equipment/held-item.mjs";
+ * @import {DamagePart} from "../../../_types"
  */
 
 /**
@@ -180,7 +183,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * @type {{item: import("@common/documents/_types.mjs").ItemData, isSecondHand: boolean}}
+   * @type {{item: import("@common/documents/_types.mjs").ItemData & {system: HeldItemModel}, isSecondHand: boolean}[]}
    */
   get hands() {
     const hand1 =
@@ -204,5 +207,29 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
         ? [{ item: hand2, isSecondHand: hand2.system.equippedHand !== 2 }]
         : []),
     ];
+  }
+
+  /**
+   * @type {DamagePart[]}
+   */
+  get weaponDamage() {
+    const hands = this.hands;
+    let res = [];
+
+    for (const hand of hands) {
+      const damageParts = hand.isSecondHand
+        ? hand.item.system.damageParts.secondary
+        : hand.item.system.damageParts.primary;
+      for (const part of damageParts ?? []) {
+        res.push(part);
+      }
+    }
+
+    return res;
+  }
+
+  /** @type {string} */
+  get defaultWeaponDamageString() {
+    return buildDamageString(this.weaponDamage);
   }
 }

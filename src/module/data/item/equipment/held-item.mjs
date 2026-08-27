@@ -1,7 +1,7 @@
 import BaseEquipmentModel from "./equipment.mjs";
 
 /**
- * @import { DamagePart } from "../../../_types"
+ * @import { DamagePart } from "../../../../_types"
  */
 
 const { NumberField, BooleanField, SchemaField, ArrayField, StringField } =

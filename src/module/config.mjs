@@ -6,7 +6,7 @@ const CELESTUS = {};
  *    Vital, VitalConfiguration,
  *    Affinity, AffinityConfiguration,
  *    DamageType, DamageTypeConfiguration
- * } from "./_types.d.ts";
+ * } from "../_types.js";
  */
 
 /**

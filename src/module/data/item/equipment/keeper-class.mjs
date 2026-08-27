@@ -3,7 +3,7 @@ import BaseEquipmentModel from "./equipment.mjs";
 const { SchemaField, StringField } = foundry.data.fields;
 
 /**
- * @import { Virtue, Vital } from "../../../_types"
+ * @import { Virtue, Vital } from "../../../../_types"
  */
 
 export default class KeeperClassModel extends BaseEquipmentModel {

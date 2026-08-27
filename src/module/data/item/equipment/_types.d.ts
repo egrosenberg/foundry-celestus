@@ -1,4 +1,4 @@
-import { DamagePart, Virtue, Vital } from "../../../_types";
+import { DamagePart, Virtue, Vital } from "../../../../_types";
 
 interface DamageModifier {
   flat: number;

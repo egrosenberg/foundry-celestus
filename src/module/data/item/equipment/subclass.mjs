@@ -3,7 +3,7 @@ import BaseEquipmentModel from "./equipment.mjs";
 const { StringField } = foundry.data.fields;
 
 /**
- * @import { Affinity } from "../../../_types"
+ * @import { Affinity } from "../../../../_types"
  */
 
 export default class SubclassModel extends BaseEquipmentModel {

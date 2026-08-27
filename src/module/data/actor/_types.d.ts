@@ -1,4 +1,4 @@
-import { Virtue, Vital } from "../../_types";
+import { Virtue, Vital } from "../../../_types";
 
 /**
  * Schema field for misc. attributes
